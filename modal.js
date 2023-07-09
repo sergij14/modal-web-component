@@ -74,11 +74,15 @@ class Modal extends HTMLElement {
         </section>
 
         <section id="modal-actions">
-          <button>Cancel</button>
-          <button>Okay</button>
+          <button data-id="cancel-button">Cancel</button>
+          <button data-id="confirm-button">Okay</button>
         </section>
       </div>
     `;
+
+    const $modalActions = this.shadowRoot.querySelector("#modal-actions");
+
+    $modalActions.addEventListener("click", this.handleModalAction.bind(this));
   }
 
   // attributeChangedCallback(name, oldValue, newValue) {
@@ -94,9 +98,25 @@ class Modal extends HTMLElement {
   //   return ['opened']
   // }
 
+  handleModalAction({ target }) {
+    if (
+      target.dataset.id === "cancel-button" ||
+      target.dataset.id === "confirm-button"
+    ) {
+      this.close();
+    }
+  }
+
   open() {
     this.isOpened = true;
     this.setAttribute("opened", "");
+  }
+
+  close() {
+    if (this.hasAttribute("opened")) {
+      this.removeAttribute("opened");
+      this.isOpened = false;
+    }
   }
 }
 

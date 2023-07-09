@@ -3,6 +3,7 @@ class Modal extends HTMLElement {
     super();
 
     this.attachShadow({ mode: "open" });
+    this.isOpened = false;
 
     this.shadowRoot.innerHTML = `
       <style>
@@ -83,6 +84,11 @@ class Modal extends HTMLElement {
   // static get observedAttributes(){
   //   return ['opened']
   // }
+
+  open() {
+    this.isOpened = true;
+    this.setAttribute("opened", "");
+  }
 }
 
 customElements.define("web-modal", Modal);

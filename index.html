@@ -14,8 +14,12 @@
     <button>Show details and confirm</button>
     <script>
       const $confirmButton = document.querySelector("button");
+      const $modal = document.querySelector("web-modal");
+
       $confirmButton.addEventListener("click", () => {
-        document.querySelector("web-modal").setAttribute("opened", '');
+        if (!$modal.isOpened) {
+          $modal.open();
+        }
       });
     </script>
   </body>

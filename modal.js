@@ -8,13 +8,21 @@ class Modal extends HTMLElement {
     this.shadowRoot.innerHTML = `
       <style>
         * {
-          margin:0;
+          margin: 0;
+          padding: 0;
           box-sizing: border-box;
         }
 
-        :host([opened]) #modal,
+        :host([opened]) #modal {
+          display: flex;
+        }
+
         :host([opened]) #backdrop {
           display: block;
+        }
+
+        ::slotted(h1) {
+          font-size: 2rem;
         }
 
         #backdrop {
@@ -40,7 +48,6 @@ class Modal extends HTMLElement {
 
           height: 30rem;
           width:50%;
-          display: flex;
           flex-direction: column;
 
           display: none;
@@ -59,9 +66,11 @@ class Modal extends HTMLElement {
 
       <div id="backdrop"></div>
       <div id="modal">
-        <h1>Please Confirm</h1>
+        <h1>
+          <slot name="modal-title"></slot>
+        </h1>
         <section id="modal-content">
-          <slot>default</slot>
+          <slot></slot>
         </section>
 
         <section id="modal-actions">

@@ -105,6 +105,14 @@ class Modal extends HTMLElement {
     ) {
       this.close();
     }
+
+    if(target.dataset.id === 'cancel-button') {
+      target.dispatchEvent(new Event('cancel'))
+    }
+
+    if(target.dataset.id === 'confirm-button') {
+      target.dispatchEvent(new Event('confirm'))
+    }
   }
 
   open() {

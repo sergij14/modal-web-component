@@ -23,6 +23,14 @@
           $modal.open();
         }
       });
+
+      $modal.addEventListener("confirm", () => {
+        console.log("modal confirm handler");
+      });
+
+      $modal.addEventListener("cancel", () => {
+        console.log("modal cancel handler");
+      });
     </script>
   </body>
 </html>

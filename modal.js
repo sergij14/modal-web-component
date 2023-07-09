@@ -11,6 +11,11 @@ class Modal extends HTMLElement {
           box-sizing: border-box;
         }
 
+        :host([opened]) #modal,
+        :host([opened]) #backdrop {
+          display: block;
+        }
+
         #backdrop {
           position: fixed;
           top:0;
@@ -65,6 +70,19 @@ class Modal extends HTMLElement {
       </div>
     `;
   }
+
+  // attributeChangedCallback(name, oldValue, newValue) {
+  //   if(name === 'opened'){
+  //     if(this.hasAttribute('opened')) {
+  //       this.shadowRoot.querySelector('#backdrop').style.display = 'block';
+  //       this.shadowRoot.querySelector('#modal').style.display = 'flex';
+  //     }
+  //   }
+  // }
+
+  // static get observedAttributes(){
+  //   return ['opened']
+  // }
 }
 
 customElements.define("web-modal", Modal);

@@ -81,8 +81,14 @@ class Modal extends HTMLElement {
     `;
 
     const $modalActions = this.shadowRoot.querySelector("#modal-actions");
+    const $modalBackdrop = this.shadowRoot.querySelector("#backdrop");
 
     $modalActions.addEventListener("click", this.handleModalAction.bind(this));
+
+    $modalBackdrop.addEventListener(
+      "click",
+      this.hanldeOutsideClick.bind(this)
+    );
   }
 
   // attributeChangedCallback(name, oldValue, newValue) {
@@ -97,6 +103,10 @@ class Modal extends HTMLElement {
   // static get observedAttributes(){
   //   return ['opened']
   // }
+
+  hanldeOutsideClick({ target }) {
+    this.close();
+  }
 
   handleModalAction({ target }) {
     if (

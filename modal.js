@@ -18,6 +18,8 @@ class Modal extends HTMLElement {
           width:100%;
           height:100%;
           background: rgba(0,0,0,0.2);
+
+          display: none;
         }
 
         #modal {
@@ -34,6 +36,8 @@ class Modal extends HTMLElement {
           width:50%;
           display: flex;
           flex-direction: column;
+
+          display: none;
         }
 
         #modal-actions{

@@ -5,11 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
     <title>Modal Web Component</title>
+    <script src="./modal.js"></script>
   </head>
   <body>
     <web-modal>
       <p>Please confirm your action</p>
     </web-modal>
-    <script src="./modal.js"></script>
+    <button>Show details and confirm</button>
+    <script>
+      const $confirmButton = document.querySelector("button");
+      $confirmButton.addEventListener("click", () => {
+        document.querySelector("web-modal").setAttribute("opened", '');
+      });
+    </script>
   </body>
 </html>

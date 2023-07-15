@@ -109,10 +109,11 @@ class Modal extends HTMLElement {
   }
 
   handleModalAction({ target }) {
-    if (
-      target.dataset.id === "cancel-button" ||
-      target.dataset.id === "confirm-button"
-    ) {
+    const {
+      dataset: { id },
+    } = target;
+
+    if (id === "cancel-button" || id === "confirm-button") {
       this.close();
     }
 
@@ -121,11 +122,11 @@ class Modal extends HTMLElement {
       composed: true,
     };
 
-    if (target.dataset.id === "cancel-button") {
+    if (id === "cancel-button") {
       target.dispatchEvent(new Event("cancel", eventProps));
     }
 
-    if (target.dataset.id === "confirm-button") {
+    if (id === "confirm-button") {
       target.dispatchEvent(new Event("confirm", eventProps));
     }
   }
